@@ -1,5 +1,10 @@
 var BlinkyDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
+
+  this.$node.html('<img src="https://ubisafe.org/images/transparent-gifs-rick-and-morty-1.gif" />');
+  var imgHeight = Math.floor(this.location.top / $('#foreground').height() * 350) + 70;
+  this.$node.css({ height: (imgHeight + 'px') });
+  
 };
 
 BlinkyDancer.prototype = Object.create(Dancer.prototype);
