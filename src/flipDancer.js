@@ -20,7 +20,7 @@ FlipDancer.prototype.step = function() {
   var self = this;
   setTimeout(function() {
     self.$node.removeClass('flip-scale-2-hor-top');
-  }, self.timeBetweenSteps/2);
+  }, self.timeBetweenSteps / 2);
   
 
 };
