@@ -1,5 +1,8 @@
 var SlideDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
+  // this.$node.removeClass('dancer');
+  // this.$node.addClass('slideDancer');
+  this.$node.html('<img src="http://mrwgifs.com/wp-content/uploads/2014/11/HQ-Carlton-Dance-With-a-Transparent-Background-Gif-From-The-Fresh-Prince-Of-Bel-Air.gif" />');
 };
 
 SlideDancer.prototype = Object.create(Dancer.prototype);

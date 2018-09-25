@@ -4,8 +4,6 @@ var Dancer = function(top, left, timeBetweenSteps) {
     
 
   this.$node = $('<span class="dancer"></span>');
-  var $foreground = $('#foreground');
-  this.$node.prependTo($foreground);
   this.timeBetweenSteps = timeBetweenSteps;
   this.location = { 
     top: top, 

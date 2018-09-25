@@ -26,11 +26,11 @@ body, a:link, a:visited, a:active{
 }
 
 #foreground {
-  width:80%;
-  height:80%;
+  width:70%;
+  height:70%;
   position:absolute;
-  top: 10%;
-  left: 10%;
+  top: 15%;
+  left: 15%;
   display:block;
 }
 
@@ -47,11 +47,23 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:40px solid red;
-  border-radius:40px;
+/*  border:40px solid red;
+  border-radius:40px;*/
+  height:200px;
   position:absolute;
 }
 
+.dancer img {
+  display:block;
+  height:100%;
+}
+
+.sidebar {
+  width:20px;
+  height:100%;
+  position:absolute;
+  right:0px;
+}
 
 /*dance classes*/
 .slide-left {
