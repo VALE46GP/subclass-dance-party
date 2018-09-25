@@ -25,3 +25,61 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+
+
+/*dance classes*/
+.slide-left {
+  -webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.slide-right {
+  -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+/*key-frames*/
+@-webkit-keyframes slide-left {
+  0% { 
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% { 
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-left {
+  0% { 
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% { 
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+}
+
+@-webkit-keyframes slide-right {
+  0% { 
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% { 
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+}
+
+@keyframes slide-right {
+  0% { 
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% { 
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+}
+
