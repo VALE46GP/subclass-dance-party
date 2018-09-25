@@ -3,7 +3,7 @@ var SlideDancer = function(top, left, timeBetweenSteps) {
   // this.$node.removeClass('dancer');
   // this.$node.addClass('slideDancer');
   this.$node.html('<img src="http://mrwgifs.com/wp-content/uploads/2014/11/HQ-Carlton-Dance-With-a-Transparent-Background-Gif-From-The-Fresh-Prince-Of-Bel-Air.gif" />');
-  var imgHeight = Math.floor(this.location.top / $('#foreground').height() * 400) + 50;
+  var imgHeight = Math.floor(this.location.top / $('#foreground').height() * 400) + 80;
   this.$node.css({ height: (imgHeight + 'px') });
 
 };

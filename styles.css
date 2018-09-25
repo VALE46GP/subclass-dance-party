@@ -37,22 +37,46 @@ body, a:link, a:visited, a:active{
   
 }
 
-.title, .addDancerButton{
-  padding:5px 12px;
-  float:right;
+.addDancerButton{
+  background: url('media/button_blue.png') no-repeat;
+  background-size: 100% 30px;
+  padding:2px 20px 6px 20px;
+  margin:0px 5px;
+  color:black;
 }
+
+.addDancerButton:hover {
+  cursor:pointer;
+}
+
+.coreographyButton {
+  background: url('media/button_purple.png') no-repeat;
+  background-size: 100% 30px;
+  padding:2px 20px 6px 20px;
+  margin:0px 5px;
+  color:black;
+}
+
+.coreographyButton:hover {
+  cursor:pointer;
+}
+
 .topbar{
   width:100%;
   height:32px;
-  /*background-color: #555;*/
+  text-align:center;
+  margin:8px 0px 0px 0px;
   position:absolute;
   top:0px;
   left:0px;
   
 }
 .title{
-  background-color: #777;
+  color:#ffffff;
+  padding: 0px 0px 0px 4px;
   width:140px;
+  float:right;
+  
 }
 .dancer{
 /*  border:40px solid red;
@@ -66,21 +90,7 @@ body, a:link, a:visited, a:active{
   height:100%;
 }
 
-.sidebar {
-  width:155px;
-  height:calc(100% - 32px);
-  position:absolute;
-  top:32px;
-  right:0px;
-  text-align:right;
-  /*background-color: #555;*/
-  padding:5px;
-  
-}
 
-.coreographyButton {
-  padding:5px 15px 5px 0px;
-}
 
 /*dance classes*/
 .slide-left {
