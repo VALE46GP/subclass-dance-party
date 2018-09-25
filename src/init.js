@@ -28,6 +28,14 @@ $(document).ready(function() {
       1000
     );
     $('#foreground').append(dancer.$node);
+    window.dancers.push(dancer);
+  });
+
+  $('.coreographyButton').on('click', function(event) {
+  
+    var coreographyMove = $(this).data('coreography-move-function-name');
+    var coreographyMoveFunction = window[coreographyMove];
+    coreographyMoveFunction();
   });
 });
 

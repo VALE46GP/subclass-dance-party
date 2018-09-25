@@ -28,3 +28,11 @@ Dancer.prototype.step = function() {
   // it just schedules the next step
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
+
+Dancer.prototype.lineUp = function(i) {
+  this.$node.style.transitionProperty = 'top,left,width,height';
+  this.location.top = 430;
+  this.location.left = $('#foreground').width() * i / window.dancers.length;
+  this.setPosition();
+  this.$node.css({ height: ('200px') });
+};
