@@ -35,6 +35,8 @@ var adventure = function() {
     if (othersArray[i][0]) {
       setTimeout(function() {
         rick[0].goOnAdventure(othersArray[i][0]);
+        window.dancers = window.dancers.filter(function(d) { console.log(d.cleanUpId); return (d.cleanUpId !== $(rick[0]).attr('id')); });
+        window.dancers = window.dancers.filter(function(d) { return (d.cleanUpId !== $(othersArray[i][0]).attr('id')); });
       }, 100);
     }
   });

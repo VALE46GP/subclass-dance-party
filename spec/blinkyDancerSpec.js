@@ -1,4 +1,4 @@
-describe('blinkyDancer', function() {
+describe('BlinkyDancer', function() {
 
   var blinkyDancer, clock;
   var timeBetweenSteps = 100;
@@ -22,7 +22,7 @@ describe('blinkyDancer', function() {
     it('should call step at least once per second', function() {
       sinon.spy(blinkyDancer, 'step');
       expect(blinkyDancer.step.callCount).to.be.equal(0);
-      // clock.tick(timeBetweenSteps); // ? it seems an extra tick is necessary...
+      clock.tick(timeBetweenSteps); // ? it seems an extra tick is necessary...
       clock.tick(timeBetweenSteps);
 
       expect(blinkyDancer.step.callCount).to.be.equal(1);
@@ -33,9 +33,22 @@ describe('blinkyDancer', function() {
   });
 
   describe('id cleanup after adventure', function() {
-    it('should remove relevant instance references from global dancers array', function() {
+    it('should remove relevant instance references from global dancers array on 1st pass', function() {
       var rick2 = new BlinkyDancer(10, 20, 1000);
       var kenny1 = new FlipDancer(40, 100, 1000);
+      adventure();
+      setTimeout(function() {
+        expect(window.dancers.length === 1);
+      }, 5000);
+      
+    });
+
+    it('should remove relevant instance references from global dancers array on 2nd pass', function() {
+      var rick2 = new BlinkyDancer(10, 20, 1000);
+      var kenny1 = new FlipDancer(40, 100, 1000);
+      adventure();
+      var rick3 = new BlinkyDancer(10, 20, 1000);
+      var kenny2 = new FlipDancer(40, 100, 1000);
       adventure();
       setTimeout(function() {
         expect(window.dancers.length === 1);
@@ -44,4 +57,5 @@ describe('blinkyDancer', function() {
     });  
   
   });
+
 });

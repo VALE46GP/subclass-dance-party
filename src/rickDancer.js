@@ -23,8 +23,6 @@ var RickDancer = function(top, left, timeBetweenSteps) {
       window.dancers = window.dancers.filter(function(d) { return (d.cleanUpId !== $(self.$node).attr('id')); });
     }, 1500);
   });
-
-  this.step();
   
 };
 
@@ -67,7 +65,7 @@ RickDancer.prototype.goOnAdventure = function(target) {
   
   /* poof away target dancer */
   setTimeout(function() {
-    $(target.$node).css({left: target.location.left + 50});
+    $(target.$node).css({ left: target.location.left + 50 });
     $(target.$node).html('<div class="dancer"><img src="https://i.gifer.com/ZfzD.gif" /></div>');
   }, 2500);
   

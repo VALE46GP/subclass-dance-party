@@ -3,7 +3,7 @@ var cleanUpCounter = 0;
 var Dancer = function(top, left, timeBetweenSteps) {
   
   // use jQuery to create an HTML <span> tag
-  this.cleanUpId = cleanUpCounter;
+  this.cleanUpId = cleanUpCounter.toString();
   this.$node = $('<span class="dancer" id="' + cleanUpCounter + '"></span>');
   cleanUpCounter++;
   this.timeBetweenSteps = timeBetweenSteps;
