@@ -27,6 +27,8 @@ RickAndMorty.prototype.step = function() {
   }, 1500);
   setTimeout(function() {
     $(self.$node).remove();
+    window.dancers = window.dancers.filter(function(d) { return (d.cleanUpId !== $(self.$node).attr('id')); });
+    window.dancers = window.dancers.filter(function(d) { return !(d instanceof RickAndMorty); });
   }, 2500);
   //remove portal somehow cool
   setTimeout(function() {

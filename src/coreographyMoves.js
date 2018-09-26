@@ -3,7 +3,7 @@ var lineUp = function() {
   var carltonCount = 0;
   var kennyCount = 0;
   window.dancers.forEach((dancer, i) => {
-    if (dancer instanceof BlinkyDancer) {
+    if (dancer instanceof RickDancer) {
       dancer.lineUp(rickCount);
       rickCount++;
     }
@@ -24,7 +24,7 @@ var adventure = function() {
   var othersArray = [];
 
   dancers.forEach((dancer, i) => {
-    if (dancer instanceof BlinkyDancer) {
+    if (dancer instanceof RickDancer) {
       rickArray.push([dancer, i]); 
     } else {
       othersArray.push([dancer, i]);
@@ -38,14 +38,14 @@ var adventure = function() {
       }, 100);
     }
   });
-  setTimeout(function() {
-    if (rickArray.length > othersArray.length) {
-      window.dancers = rickArray.splice(-othersArray.length);
-    } else if (rickArray.length < othersArray.length) {
-      window.dancers = othersArray.splice(-rickArray.length);
-    } else {
-      window.dancers = [];
-    }
-  }, rickArray.length * 100);
+  
+  // setTimeout(function() {
+  //   if (rickArray.length > othersArray.length) {
+  //     window.dancers = rickArray.splice(-othersArray.length);
+  //   } else if (rickArray.length < othersArray.length) {
+  //     window.dancers = othersArray.splice(-rickArray.length);
+  //   } else {
+  //     window.dancers = [];
+  //   }
+  // }, rickArray.length * 100);
 };
-

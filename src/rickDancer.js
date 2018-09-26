@@ -1,4 +1,4 @@
-var BlinkyDancer = function(top, left, timeBetweenSteps) {
+var RickDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
 
   this.$node.html('<img src="https://ubisafe.org/images/transparent-gifs-rick-and-morty-1.gif" />');
@@ -12,23 +12,26 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
     $('#foreground').append($portal);
     $portal.css({ top: self.location.top, left: self.location.left, zIndex: -1});
     //add swirl-out class to rick
-    $(this).addClass('swirl-out-bck');
+    $(this).addClass('swirl-out-bck clean-me');
     //remove portal somehow cool
     setTimeout(function() {
-      $portal.addClass('swirl-out-bck');
+      $portal.addClass('swirl-out-bck clean-me');
     }, 1000);
     //remove node
     setTimeout(function() {
       $portal.remove();
+      window.dancers = window.dancers.filter(function(d) { return (d.cleanUpId !== $(self.$node).attr('id')); });
     }, 1500);
   });
+
+  this.step();
   
 };
 
-BlinkyDancer.prototype = Object.create(Dancer.prototype);
-BlinkyDancer.prototype.constructor = BlinkyDancer;
+RickDancer.prototype = Object.create(Dancer.prototype);
+RickDancer.prototype.constructor = RickDancer;
 
-BlinkyDancer.prototype.step = function() {
+RickDancer.prototype.step = function() {
   // call the old version of step at the beginning of any call to this
   // new version of step
   Dancer.prototype.step.call(this);
@@ -38,10 +41,10 @@ BlinkyDancer.prototype.step = function() {
   // this.$node.toggle();
 };
 
-BlinkyDancer.prototype.lineUp = function(i) {
+RickDancer.prototype.lineUp = function(i) {
   this.location.top = 530;
-  var blinkyDancerPop = window.dancers.filter(function(d) { return d instanceof BlinkyDancer; }).length;
-  this.location.left = $('#foreground').width() * (i + 0.25) / blinkyDancerPop;
+  var rickDancerPop = window.dancers.filter(function(d) { return d instanceof RickDancer; }).length;
+  this.location.left = $('#foreground').width() * (i + 0.25) / rickDancerPop;
   this.$node.animate({ 
     top: this.location.top,
     left: this.location.left,
@@ -49,7 +52,7 @@ BlinkyDancer.prototype.lineUp = function(i) {
   }, { duration: 800 });
 };
 
-BlinkyDancer.prototype.goOnAdventure = function(target) {
+RickDancer.prototype.goOnAdventure = function(target) {
   var self = this;
   /* rick goes to a non-rick dancer */
   var imgHeight = Math.floor(target.location.top / $('#foreground').height() * 350) + 70;
@@ -64,7 +67,7 @@ BlinkyDancer.prototype.goOnAdventure = function(target) {
   
   /* poof away target dancer */
   setTimeout(function() {
-    $(target.$node).css({left: target.location.left + 50})
+    $(target.$node).css({left: target.location.left + 50});
     $(target.$node).html('<div class="dancer"><img src="https://i.gifer.com/ZfzD.gif" /></div>');
   }, 2500);
   
@@ -81,6 +84,8 @@ BlinkyDancer.prototype.goOnAdventure = function(target) {
     // replace RickAndMorty image with RickAndMortyPortal image
     $(self.$node).remove();
     $(target.$node).remove();
+    window.dancers = window.dancers.filter(function(d) { return (d.cleanUpId !== $(target.$node).attr('id')); });
+    window.dancers = window.dancers.filter(function(d) { return (d.cleanUpId !== $(self.$node).attr('id')); });
 
     // spin-out-bck RickAndMorty Object
 

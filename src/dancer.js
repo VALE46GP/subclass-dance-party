@@ -1,8 +1,11 @@
 // Creates and returns a new dancer object that can step
+var cleanUpCounter = 0;
 var Dancer = function(top, left, timeBetweenSteps) {
   
-  // use jQuery to create an HTML <span> tag  
-  this.$node = $('<span class="dancer"></span>');
+  // use jQuery to create an HTML <span> tag
+  this.cleanUpId = cleanUpCounter;
+  this.$node = $('<span class="dancer" id="' + cleanUpCounter + '"></span>');
+  cleanUpCounter++;
   this.timeBetweenSteps = timeBetweenSteps;
   this.location = { 
     top: top, 
@@ -29,15 +32,12 @@ Dancer.prototype.step = function() {
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
-Dancer.prototype.lineUp = function(i) {
-  this.location.top = 430;
-  this.location.left = $('#foreground').width() * (i + 0.25) / window.dancers.length;
-  this.$node.animate({ 
-    top: this.location.top,
-    left: this.location.left,
-    height: '200px'
-  }, { duration: 800 });
-
-  // this.setPosition();
-  // this.$node.css({  });
-};
+// Dancer.prototype.lineUp = function(i) {
+//   this.location.top = 430;
+//   this.location.left = $('#foreground').width() * (i + 0.25) / window.dancers.length;
+//   this.$node.animate({ 
+//     top: this.location.top,
+//     left: this.location.left,
+//     height: '200px'
+//   }, { duration: 800 });
+// };
