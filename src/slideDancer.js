@@ -24,3 +24,15 @@ SlideDancer.prototype.step = function() {
     this.$node.addClass('slide-right');
   }
 };
+
+
+SlideDancer.prototype.lineUp = function(i) {
+  this.location.top = 280;
+  var slideDancerPop = window.dancers.filter(function(d) { return d instanceof SlideDancer; }).length;
+  this.location.left = $('#foreground').width() * (i + 0.25) / slideDancerPop;
+  this.$node.animate({ 
+    top: this.location.top,
+    left: this.location.left,
+    height: '250px'
+  }, { duration: 800 });
+};

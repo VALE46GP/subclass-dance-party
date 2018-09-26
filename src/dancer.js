@@ -30,9 +30,14 @@ Dancer.prototype.step = function() {
 };
 
 Dancer.prototype.lineUp = function(i) {
-  this.$node.style.transitionProperty = 'top,left,width,height';
   this.location.top = 430;
-  this.location.left = $('#foreground').width() * i / window.dancers.length;
-  this.setPosition();
-  this.$node.css({ height: ('200px') });
+  this.location.left = $('#foreground').width() * (i + 0.25) / window.dancers.length;
+  this.$node.animate({ 
+    top: this.location.top,
+    left: this.location.left,
+    height: '200px'
+  }, { duration: 800 });
+
+  // this.setPosition();
+  // this.$node.css({  });
 };

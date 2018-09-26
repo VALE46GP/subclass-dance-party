@@ -21,6 +21,15 @@ FlipDancer.prototype.step = function() {
   setTimeout(function() {
     self.$node.removeClass('flip-scale-2-hor-top');
   }, self.timeBetweenSteps / 2);
-  
+};
 
+FlipDancer.prototype.lineUp = function(i) {
+  this.location.top = 600;
+  var flipDancerPop = window.dancers.filter(function(d) { return d instanceof FlipDancer; }).length;
+  this.location.left = $('#foreground').width() * (i + 0.25) / flipDancerPop;
+  this.$node.animate({ 
+    top: this.location.top,
+    left: this.location.left,
+    height: '150px'
+  }, { duration: 800 });
 };
