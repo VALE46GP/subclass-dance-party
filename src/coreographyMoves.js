@@ -29,14 +29,23 @@ var adventure = function() {
     } else {
       othersArray.push([dancer, i]);
     }
-  });
+  });  
 
   rickArray.forEach((rick, i) => {
-    if (othersArray[i]) {
+    if (othersArray[i][0]) {
       setTimeout(function() {
-        rick[0].goOnAdventure(othersArray[i][0], rick[1], othersArray[i][1]);
+        rick[0].goOnAdventure(othersArray[i][0]);
       }, 100);
     }
   });
+  setTimeout(function() {
+    if (rickArray.length > othersArray.length) {
+      window.dancers = rickArray.splice(-othersArray.length);
+    } else if (rickArray.length < othersArray.length) {
+      window.dancers = othersArray.splice(-rickArray.length);
+    } else {
+      window.dancers = [];
+    }
+  }, rickArray.length * 100);
 };
 

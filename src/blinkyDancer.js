@@ -18,8 +18,9 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
       $portal.addClass('swirl-out-bck');
     }, 1000);
     //remove node
-    //instantiate new random rick
-    // $(this).html('<img src="https://i.giphy.com/media/i2tLw5ZyikSFdkeGHT/giphy.webp" />');
+    setTimeout(function() {
+      $portal.remove();
+    }, 1500);
   });
   
 };
@@ -48,7 +49,7 @@ BlinkyDancer.prototype.lineUp = function(i) {
   }, { duration: 800 });
 };
 
-BlinkyDancer.prototype.goOnAdventure = function(target, rickIndex, targetIndex) {
+BlinkyDancer.prototype.goOnAdventure = function(target) {
   var self = this;
   /* rick goes to a non-rick dancer */
   var imgHeight = Math.floor(target.location.top / $('#foreground').height() * 350) + 70;
@@ -56,16 +57,37 @@ BlinkyDancer.prototype.goOnAdventure = function(target, rickIndex, targetIndex) 
     top: target.location.top - 30,
     left: target.location.left - 30,
     height: (imgHeight + 'px')
-  }, { duration: 1500 });
+  }, { duration: 2000 });
   setTimeout(function() {
     $(self.$node).css({ zIndex: -1 });
-  }, 1400);
-
-  /* both dancers replaced with RickAndMorty Object */
+  }, 1800);
+  
+  /* poof away target dancer */
   setTimeout(function() {
+    $(target.$node).css({left: target.location.left + 50})
+    $(target.$node).html('<div class="dancer"><img src="https://i.gifer.com/ZfzD.gif" /></div>');
+  }, 2500);
+  
+  setTimeout(function() {
+  // instantiate RickAndMorty Object at target location
+    var dancer = new RickAndMorty(
+      target.location.top,
+      target.location.left,
+      1000
+    );
+    $('#foreground').append(dancer.$node);
+    window.dancers.push(dancer);
+    
+    // replace RickAndMorty image with RickAndMortyPortal image
     $(self.$node).remove();
     $(target.$node).remove();
-  }, 1500);
+
+    // spin-out-bck RickAndMorty Object
+
+    /* both dancers replaced with RickAndMorty Object */
+  
+
+  }, 3000);
 
 
 
